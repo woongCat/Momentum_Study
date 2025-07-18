@@ -1,0 +1,67 @@
+# Name and description of the semantic model.
+name: GSENC_CSO_STREAMLIT
+description: GSENC CSO Streamlit
+
+# A semantic model can contain one or more logical tables.
+tables:
+
+  # A logical table on top of a base table.
+  - name: CSO_INSPECTIONS_RESULTS
+    description: CSO Inspections Results
+
+    # The fully qualified name of the base table.
+    base_table:
+      database: GSENC_DEV_DB
+      schema: PUBLIC
+      table: CSO_INSPECTIONS_RESULTS
+
+    # Dimension columns in the logical table.
+    dimensions:
+      - name: INSPECTION_ID
+        synonyms: <array of strings>
+        description: <string>
+        expr: <SQL expression>
+        data_type: <data type>
+        unique: <boolean>
+        cortex_search_service:
+          service: <string>
+          literal_column: <string>
+          database: <string>
+          schema: <string>
+        is_enum: <boolean>
+
+    # Time dimension columns in the logical table.
+    time_dimensions:
+      - name: INSPECTION_DATE
+        synonyms:  <array of strings>
+        description: <string>
+        expr: <SQL expression>
+        data_type: <data type>
+        unique: <boolean>
+
+    # Measure columns in the logical table.
+    measures:
+      - name: STATUS
+        synonyms: <array of strings>
+        description: <string>
+        expr: <SQL expression>
+        data_type: <data type>
+        default_aggregation: <aggregate function>
+
+    # Commonly used filters over the logical table.
+    filters:
+      - name: INSPECTION_ID
+        synonyms: <array of strings>
+        description: <string>
+        expr: <SQL expression>
+
+# Example questions and queries that answer them
+verified_queries:
+
+# Verified Query (1 of n)
+- name:                         # A descriptive name of the query.
+  question:                     # The natural language question that this query answers.
+  verified_at:                  # Optional: Time (in seconds since the UNIX epoch, January 1, 1970) when the query was verified.
+  verified_by:                  # Optional: Name of the person who verified the query.
+  use_as_onboarding_question:   # Optional: Marks this question as an onboarding question for the end user.
+  sql:                          # The SQL query for answering the question.
